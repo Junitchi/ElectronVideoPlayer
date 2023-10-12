@@ -3,6 +3,7 @@ require('electron-reload')(__dirname);
 const isDev = require('electron-is-dev');
 const path = require('path');
 const { send } = require('process');
+// const contextMenu = require('electron-context-menu');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -24,6 +25,10 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+  // contextMenu({
+  //   window: mainWindow,
+  // });
 
   // Open the DevTools.
   const menu = new Menu()
@@ -116,6 +121,28 @@ const createWindow = () => {
 }))
 
   Menu.setApplicationMenu(menu)
+  
+  const contextMenu = new Menu()
+  contextMenu.append(new MenuItem({ label: 'Open Video', click() { openVideoFileDialog() } }))
+
+  contextMenu.append(new MenuItem({ type: 'separator' }))
+
+  contextMenu.append(new MenuItem({ label: 'Play/Pause', click() { sendToRenderer('toggle-play-pause') } }))
+  contextMenu.append(new MenuItem({ label: 'Stop and Restart', click() { sendToRenderer('stop-and-restart') } }))
+  contextMenu.append(new MenuItem({ label: 'Rewind', click() { sendToRenderer('rewind') } }))
+  contextMenu.append(new MenuItem({ label: 'Fastforward', click() { sendToRenderer('fast-forward') } }))
+  contextMenu.append(new MenuItem({ label: 'Go to end', click() { sendToRenderer('go-to-end') } }))
+  contextMenu.append(new MenuItem({ label: 'Mute/Unmute', click() { sendToRenderer('toggle-mute') } }))
+  contextMenu.append(new MenuItem({ label: 'Loop/Unloop', click() { sendToRenderer('toggle-loop') } }))
+
+  contextMenu.append(new MenuItem({ type: 'separator' }))
+
+  contextMenu.append(new MenuItem({ label: 'MenuItem2', type: 'checkbox', checked: true }))
+
+  mainWindow.webContents.on('context-menu', (e, params) => {
+    contextMenu.popup(mainWindow, params.x, params.y)
+  })
+
 
   if (isDev) {
     mainWindow.webContents.openDevTools({ mode: 'detach' });
