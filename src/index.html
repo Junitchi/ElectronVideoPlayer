@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <style>
+      .vjs-futuristic {
+        color: #00ff00;
+        text-shadow: 0px 0px 5px #00ff00;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" id="fileSelector" accept="video/*">
+    <button id="fullScreenButton" onclick="fullScreen()">FullScreen</button>
+    <button onclick="togglePlayPause()">Play/Pause</button>
+    <button onclick="stopAndRestart()">Stop and Restart</button>
+    <button onclick="rewind()">Rewind</button>
+    <button onclick="fastForward()">Fast forward</button>
+    <input type="text" id="urlInput" placeholder="Enter URL" />
+    <button id="loadUrlButton">Load URL</button>
+
+    <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered vjs-futuristic" controls preload="auto" width="640" height="264"></video>
+    <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+    <script src="renderer.js"></script>
+  </body>
+</html>

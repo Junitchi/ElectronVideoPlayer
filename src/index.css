@@ -1,0 +1,57 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+}
+/* 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #232323;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+} */
+
+.vjs-my-button {
+  /* This will make the button look like a default Video.js button */
+  font-family: VideoJS;
+  font-size: 1em;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  /* width: 4em; */
+  /* height: 3em; */
+  cursor: pointer;
+  margin-top: -4px !important;
+  /* font-family: FontAwesome;
+    content:"\f125"; */
+}
+
+.vjs-forward-button::before {
+  content: '\f04a'; /* Unicode for 'fa-forward' icon in FontAwesome */
+  font-family: 'Font Awesome 5 Free'; /* Use 'Font Awesome 5 Brands' for brand icons */
+  font-weight: 900; /* Use 400 for brand icons */
+}
+
+.vjs-backwards-button::before{
+  content: '\f04e'; /* Unicode for 'fa-forward' icon in FontAwesome */
+  font-family: 'Font Awesome 5 Free'; /* Use 'Font Awesome 5 Brands' for brand icons */
+  font-weight: 900; /* Use 400 for brand icons */
+}
+
+.vjs-control-bar-remove-opacity{
+  opacity: 100% !important;
+}
+
+.vjs-control-bar{
+  height: 4em !important;
+  padding-top: 6px !important;
+  border: 1px outset rgb(65, 58, 58);
+}

@@ -1,0 +1,39 @@
+{
+  "name": "electronvideoplayer",
+  "productName": "electronvideoplayer",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "dev": "nodemon --exec npm start",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Junitchi",
+    "email": "47652587+Junitchi@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@electron/remote": "^2.0.12",
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "electron-is-dev": "^2.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "video.js": "^7.21.5",
+    "videojs-seek-buttons": "^3.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
+    "electron": "^27.0.0",
+    "electron-reload": "^2.0.0-alpha.1"
+  }
+}
