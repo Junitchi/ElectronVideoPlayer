@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, MenuItem, dialog } = require('electron');
+const { app, BrowserWindow, Menu, MenuItem, dialog, globalShortcut, Notification, ipcMain } = require('electron');
 require('electron-reload')(__dirname);
 const isDev = require('electron-is-dev');
 const path = require('path');
@@ -154,6 +154,45 @@ const createWindow = () => {
     }
   }
 
+  mainWindow.webContents.on('did-finish-load', () => {
+    globalShortcut.register('CommandOrControl+Shift+P', () => {
+      // let message = updateClipboardContent();
+      mainWindow.webContents.send("play-command-pressed");
+    });
+    globalShortcut.register('CommandOrControl+Shift+R', () => {
+      // let message = updateClipboardContent();
+      mainWindow.webContents.send("rewind-command-pressed");
+    });
+    globalShortcut.register('CommandOrControl+Shift+F', () => {
+      // let message = updateClipboardContent();
+      mainWindow.webContents.send("fastforward-command-pressed");
+    });
+    globalShortcut.register('CommandOrControl+Shift+L', () => {
+      // let message = updateClipboardContent();
+      mainWindow.webContents.send("looping-command-pressed");
+    });
+    globalShortcut.register('CommandOrControl+Shift+M', () => {
+      // let message = updateClipboardContent();
+      mainWindow.webContents.send("mute-command-pressed");
+    });
+
+    
+
+    function showNotification (notificationTitle, notificationBody) {
+      console.log(notificationBody)
+      const notification = {
+        title: notificationTitle,
+        body: notificationBody
+      }
+      new Notification(notification).show()
+    }
+    
+    ipcMain.on("trigger-notification", (event, title, body) => {
+      console.log("triggering notification")
+      showNotification(title, body);
+    })
+    showNotification("Basic", "Test"); 
+  });
   // function toggleFullscreen() {
   //   if (mainWindow) {
   //     const webContents = mainWindow.webContents;
@@ -185,6 +224,7 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.

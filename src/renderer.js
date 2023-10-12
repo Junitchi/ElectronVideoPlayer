@@ -186,6 +186,11 @@ window.onload = function() {
   
   const toggleLoop = () => {
     player.loop(!player.loop());
+    let loopNotificationStatus={true: "is", false: "is not"};
+    // ipcRenderer.send('trigger-notification',
+    // 'Basic Notification',
+    // 'Video Player ' + loopNotificationStatus[player.loop()] + " looping"
+    // )
   };
   
   const getSource = () => {
@@ -272,3 +277,23 @@ window.onload = function() {
   ipcRenderer.on('get-source', () => {
     console.log(getSource());
   });
+
+  ipcRenderer.on('play-command-pressed', () => {
+    togglePlayPause();
+  })
+
+  ipcRenderer.on('rewind-command-pressed', () => {
+    rewind();
+  })
+
+  ipcRenderer.on('fastforward-command-pressed', () => {
+    fastForward();
+  })
+
+  ipcRenderer.on('looping-command-pressed', () => {
+    toggleLoop();
+  })
+
+  ipcRenderer.on('mute-command-pressed', () => {
+    toggleMute();
+  })
