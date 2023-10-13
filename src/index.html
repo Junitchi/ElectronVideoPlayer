@@ -4,15 +4,10 @@
     <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="themes.css">
     
-    <style>
-      .vjs-futuristic {
-        color: #00ff00;
-        text-shadow: 0px 0px 5px #00ff00;
-      }
-    </style>
   </head>
-  <body>
+  <body >
     <!-- <input type="file" id="fileSelector" accept="video/*"> -->
     <!-- <button id="fullScreenButton" onclick="fullScreen()">FullScreen</button> -->
     <!-- <button onclick="togglePlayPause()">Play/Pause</button> -->
@@ -23,8 +18,86 @@
     <!-- <button id="loadUrlButton">Load URL</button> -->
     <!-- <div id="myElement" data-contextmenu="myCustomMenu">Right-click me!</div> -->
 
-    <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered vjs-futuristic" controls preload="auto" width="640" height="264"></video>
+    <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="100%" height="auto"></video>
     <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
     <script src="renderer.js"></script>
+    <script>
+      const fs = require('fs');
+      const path = require('path');
+
+      const themeListeners = ["futuristic", "light-mode", "dark-mode", "antique-mode", "retro", "neon"];
+      // const {ipcRenderer} = require('electron');
+      themeListeners.forEach(theme => {
+        ipcRenderer.on(theme, (event, bodyStyle, videoPlayerStyle) => {
+          console.log(theme, bodyStyle, videoPlayerStyle);
+          changeStyle(bodyStyle, videoPlayerStyle);
+        })
+      })
+      // Path to your config file
+      const configPath = path.join(__dirname, 'config.json');
+
+      let config;
+
+      // Check if the config file exists
+      if (fs.existsSync(configPath)) {
+        // Read the config file
+        config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      } else {
+        // If the config file doesn't exist, create a new one
+        config = {};
+      }
+
+      var currentBodyStyle = 'futuristic';
+      var currentVideoPlayerStyle = 'vjs-futuristic';
+            // Define your video player element
+      var videoPlayer = document.getElementById('my-video');
+
+      // Define your body element
+      var body = document.body;
+      // Check if the theme variable exists
+      if (!config.theme) {
+        // If the theme variable doesn't exist, create one with .futuristic and .vjs-futuristic
+        config.theme = ['futuristic', 'vjs-futuristic'];
+
+        // Write the updated config back to the file
+        fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
+      } else {
+        currentBodyStyle = config.theme[0];
+        currentVideoPlayerStyle = config.theme[1];
+      }
+
+      console.log(config.theme, currentBodyStyle); // Logs ['.futuristic', '.vjs-futuristic']
+      
+      body.classList.add(currentBodyStyle);
+      videoPlayer.classList.add(currentVideoPlayerStyle);
+
+      // Define variables to store the current styles
+
+      // Function to change the style
+      function changeStyle(bodyStyle, videoPlayerStyle) {
+        // Remove the current styles
+        if (currentBodyStyle) {
+          body.classList.remove(currentBodyStyle);
+        }
+        if (currentVideoPlayerStyle) {
+          videoPlayer.classList.remove(currentVideoPlayerStyle);
+        }
+
+        // Add the new styles
+        body.classList.add(bodyStyle);
+        videoPlayer.classList.add(videoPlayerStyle);
+
+        config.theme = [bodyStyle, videoPlayerStyle];
+
+        // Write the updated config back to the file
+        fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
+
+        // Update the current styles
+        currentBodyStyle = bodyStyle;
+        currentVideoPlayerStyle = videoPlayerStyle;
+      }
+
+
+    </script>
   </body>
 </html>

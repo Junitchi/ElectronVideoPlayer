@@ -14,7 +14,7 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 500,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -105,6 +105,35 @@ const createWindow = () => {
     //   click: () => sendToRenderer('get-source')
     // }
   ] }))
+  menu.append(new MenuItem({ label: 'Theme',
+  submenu: [
+    {
+      label: 'Futuristic',
+      click: () => {themeChangerListener('futuristic', 'futuristic','vjs-futuristic')}
+    },
+    {
+      label: 'Light Mode',
+      click: () => {themeChangerListener('light-mode', 'light-mode','vjs-light-mode')}
+    },  
+    {
+      label: 'Dark Mode',
+      click: () => {themeChangerListener('dark-mode','dark-mode','vjs-dark-mode')}
+    },
+    {
+      label: 'Antique Mode',
+      click: () => {themeChangerListener('antique-mode','antique','vjs-antique-mode')}
+    },
+    {
+      label: 'Retro Mode',
+      click: () => {themeChangerListener('retro','retro','vjs-retro')}
+    },
+    {
+      label: 'Neon Mode',
+      click: () => {themeChangerListener('neon','neon','vjs-neon')}
+    },
+  ]
+
+}))
   menu.append(new MenuItem({ label: 'About',
   submenu: [
     {
@@ -178,6 +207,12 @@ const createWindow = () => {
   function sendToRenderer(listenerName, optionalParameter) {
     if (mainWindow) {
       mainWindow.webContents.send(listenerName, optionalParameter);
+    }
+  }
+
+  function themeChangerListener(listenerName, bodyTheme, videoPlayerTheme){
+    if(mainWindow){
+      mainWindow.webContents.send(listenerName, bodyTheme, videoPlayerTheme)
     }
   }
 

@@ -1,9 +1,14 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
+  /* margin: auto; */
+  /* max-width: 38rem; */
   /* padding: 2rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 /* 
 body {
@@ -18,6 +23,12 @@ body {
 .container {
   text-align: center;
 } */
+
+.video-js.video-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 
 .vjs-my-button {
   /* This will make the button look like a default Video.js button */
@@ -54,4 +65,8 @@ body {
   height: 4em !important;
   padding-top: 6px !important;
   border: 1px outset rgb(65, 58, 58);
+}
+
+#my-video {
+  width: 100vw;
 }

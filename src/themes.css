@@ -1,0 +1,88 @@
+.dark-mode, .light-mode, .antique, .futuristic, .vjs-dark-mode, .vjs-light-mode, .vjs-antique, .retro, .neon, .vjs-retro, .vjs-neon {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .dark-mode {
+    background-color: #000;
+    color: #fff;
+    border: 3px inset #302929;
+    box-shadow: 0px 0px 5px #000;
+  }
+  
+  .light-mode {
+    background-color: #fff;
+    color: #000;
+    border: 3px inset #867373;
+    box-shadow: 0px 0px 5px #867373;
+  }
+  
+  .antique {
+    background-color: #deb887;
+    color: #000;
+    border: 3px inset #deb887;
+    box-shadow: 0px 0px 5px #deb887;
+  }
+  
+  .futuristic {
+    color: #00ff00;
+    text-shadow: 0px 0px 5px #00ff00;
+    background-color: #0e810e;
+  }
+  
+  .vjs-futuristic {
+    color: #00ff00;
+    text-shadow: 0px 0px 5px #00ff00;
+  }
+  
+  .vjs-dark-mode{
+    background-color: #000;
+    color: #fff;
+    border: 3px inset #302929;
+  }
+  
+  .vjs-light-mode{
+    background-color: #fff;
+    color: #000;
+    border: 3px inset #867373;
+  }
+  
+  .vjs-light-mode .vjs-control-bar{
+      background-color: wheat;
+  }
+  
+  .vjs-antique{
+      background-color: #deb887;
+      color: #000;
+      border: 3px inset #deb887;
+  }
+  
+  .video-js:hover {
+      border: 3px outset black;
+  }
+  
+  .retro {
+      background-color: #663300;
+      color: #ffcc99;
+      border: 3px inset #663300;
+      box-shadow: 0px 0px 5px #663300;
+  }
+  
+  .neon {
+      background-color: #000;
+      color: #00ffff;
+      border: 3px inset #00ffff;
+      box-shadow: 0px 0px 5px #00ffff;
+  }
+  
+  .vjs-retro {
+      background-color: #663300;
+      color: #ffcc99;
+      border: 3px inset #663300;
+  }
+  
+  .vjs-neon {
+      background-color: #000;
+      color: #00ffff;
+      border: 3px inset #00ffff; 
+  }
+  
