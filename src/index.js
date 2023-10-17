@@ -4,6 +4,7 @@ const isDev = require('electron-is-dev');
 const path = require('path');
 const { send } = require('process');
 // const contextMenu = require('electron-context-menu');
+// const contextMenu = require("./right-click-menu.js");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
