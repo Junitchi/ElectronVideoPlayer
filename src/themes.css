@@ -5,21 +5,21 @@
   .dark-mode {
     background-color: #000;
     color: #fff;
-    border: 3px inset #302929;
+    border: 1px inset #302929;
     box-shadow: 0px 0px 5px #000;
   }
   
   .light-mode {
     background-color: #fff;
     color: #000;
-    border: 3px inset #867373;
+    border: 1px inset #867373;
     box-shadow: 0px 0px 5px #867373;
   }
   
   .antique {
     background-color: #deb887;
     color: #000;
-    border: 3px inset #deb887;
+    border: 1px inset #deb887;
     box-shadow: 0px 0px 5px #deb887;
   }
   
@@ -37,13 +37,13 @@
   .vjs-dark-mode{
     background-color: #000;
     color: #fff;
-    border: 3px inset #302929;
+    /* border: 1px inset #302929; */
   }
   
   .vjs-light-mode{
     background-color: #fff;
     color: #000;
-    border: 3px inset #867373;
+    border: 1px inset #867373;
   }
   
   .vjs-light-mode .vjs-control-bar{
@@ -53,36 +53,36 @@
   .vjs-antique{
       background-color: #deb887;
       color: #000;
-      border: 3px inset #deb887;
+      border: 1px inset #deb887;
   }
   
   .video-js:hover {
-      border: 3px outset black;
+      /* border: 1px outset black; */
   }
   
   .retro {
       background-color: #663300;
       color: #ffcc99;
-      border: 3px inset #663300;
+      border: 1px inset #663300;
       box-shadow: 0px 0px 5px #663300;
   }
   
   .neon {
       background-color: #000;
       color: #00ffff;
-      border: 3px inset #00ffff;
+      border: 1px inset #00ffff;
       box-shadow: 0px 0px 5px #00ffff;
   }
   
   .vjs-retro {
       background-color: #663300;
       color: #ffcc99;
-      border: 3px inset #663300;
+      border: 1px inset #663300;
   }
   
   .vjs-neon {
       background-color: #000;
       color: #00ffff;
-      border: 3px inset #00ffff; 
+      border: 1px inset #00ffff; 
   }
   

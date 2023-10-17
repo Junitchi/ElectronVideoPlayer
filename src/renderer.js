@@ -79,7 +79,10 @@ var SeekForwardButton = videojs.extend(Button, {
 videojs.registerComponent('SeekBackwardButton', SeekBackwardButton);
 videojs.registerComponent('SeekForwardButton', SeekForwardButton);
   
-const player = videojs('my-video', options);
+const player = videojs('my-video', options, () => {
+  let vjsControlBar = document.querySelector('.vjs-control-bar'); // Use querySelector instead of getElementsByClassName
+  vjsControlBar.classList.add('vjs-control-bar-remove-opacity')
+});
 
 // player.getChild('controlBar').addChild('SeekBackwardButton', {});
 // player.getChild('controlBar').addChild('SeekForwardButton', {});

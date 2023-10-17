@@ -7,8 +7,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  height: 99.5vh !important;
+  /* height: fit-content; */
+  /* width: 100% !important; */
+  margin: 0 !important;
+  padding: 0% !important;
 }
 /* 
 body {
@@ -25,8 +28,11 @@ body {
 } */
 
 .video-js.video-container {
-  width: 100% !important;
-  height: 100% !important;
+  /* width: 100% !important; */
+  /* width: fit-content; */
+  /* height: fit-content !important; */
+  height: 100%;
+  /* overflow: ; */
 }
 
 
@@ -68,5 +74,12 @@ body {
 }
 
 #my-video {
-  width: 100vw;
+  width: 100% !important;
+  height: 98.99vh;
+  /* overflow-y: hidden; */
+}
+
+.my-video-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+ padding-top: 50% !important;
+ margin-top: 5px;
 }
